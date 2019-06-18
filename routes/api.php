@@ -18,5 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'cors'], function() {
-    Route::resource('user', 'UserController');
+    // Route::resource('user', 'UserController');
+    Route::get('get-users', 'UserController@index');
+    Route::post('create-user', 'UserController@store');
+    Route::get('get-user/{id}', 'UserController@show');
+    Route::post('edit-user/{id}', 'UserController@update');
 });
